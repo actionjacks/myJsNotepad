@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="counter__container">
+      <form class="counter__form">
+
+        <label for="textToCount">Enter your text here</label>
+        <textarea id="textToCount" class="counter__textToCount" name="" cols="50"
+          rows="10">tata mama tata mama tata mama</textarea>
+
+        <label for="whatToCount">What to count</label>
+        <input id="whatToCount" class="counter__whatToCount" type="text" value="tata">
+
+        <button class="counter__btn">Search</button>
+      </form>
+      <div class="counter__itemsCounted">
+        <div class="countedLetters__container">letters: <span class="countedLetters">0</span></div>
+        <div class="countedWords__container">Words: <span class="countedWords">0</span></div>
+      </div>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>
