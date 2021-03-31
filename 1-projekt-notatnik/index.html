@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./_styles/styles.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="sidebar__left">
+      <nav>
+        <ul>
+          <li><a href="#redux-react">1</a></li>
+          <li><a href="#redux-react-2">2</a></li>
+          <li><a href="">3</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content__middle">
+      <section id="redux-react">
+        <div>
+          <p class="file__name">index.js</p>
+          <p>import { Provider } from "react-redux"</p>
+          <p>import store from "location of my store"</p>
+          <p>ReactDOM.render(<br />
+            <*React.StrictMode><br />
+              <*Provider store={store}><br />
+                <*App /><br />
+                <*/Provider> <br />
+                */React.StrictMode>,<br />
+                document.getElementById("root")<br />
+                );<br />
+          </p>
+        </div>
+        <div>
+          <p class="file__name">store.js</p><span>store file</span>
+          <p>import { configureStore } from "@reduxjs/toolkit"</p>
+          <p>import myArrayReducer from "location of my slice"</p>
+          <p>export default configureStore({<br />
+            reducer: {<br />
+            myArray: myArrayReducer,<br />
+            },<br />
+            });<br />
+          </p>
+        </div>
+        <div>
+          <p class="file__name">myArraySlice.js</p><span>reducer file</span>
+          <p>import { createSlice } from "@reduxjs/toolkit"</p>
+          <p>const initialState = {<br />
+            myArray: [],<br />
+            };<br />
+            const myArraySlice = createSlice({<br />
+            name: "myArray",<br />
+            initialState,<br />
+            reducers: {<br />
+            <br />
+            saveToMyArray: (state, action) => {<br />
+            state.myArray.push(action.payload);<br />
+            },<br />
+            <br />
+            deletFromMyArray: (state, action) => {<br />
+            state.myArray.map((item) => {<br />
+            if (action.payload === item.id){ <br />
+            *filter or delete <br />
+            } <br />
+            },<br />
+            },<br />
+            });</p>
+          <p>export const { saveToMyArray, deletFromMyArray } = myArraySlice.actions</p>
+          <p>export const selectMyArray= (state) => state.myArray.myArray</p>
+          <p>export default myArraySlice.reducer</p>
+        </div>
+        <div>
+          <p class="file__name">Component.js</p><span>component - save data to redux state</span>
+          <p>import { useDispatch } from "react-redux"</p>
+          <p>import { saveToMyArray } from "location of my slice"</p>
+          <p>
+            function Input() { <br />
+            const [input, setInput] = useState(""); <br />
+            const dispatch = useDispatch(); <br />
+            <br />
+            const addToMyArray = () => { <br />
+            dispatch( <br />
+            saveToMyArray({ <br />
+            name: input, <br />
+            id: Date.now(), <br />
+            }) <br />
+            ); <br />
+            }; <br />
+
+            return ( <br />
+            <*div className="input"> <br />
+              <*input <br />
+              type="text" <br />
+              value={input} <br />
+              onChange={(e) => setInput(e.target.value)} <br />
+              /> <br />
+              <*button onClick={addToMyArray}>Add</*button> <br />
+            </*div> <br />
+            ); <br />
+            } <br />
+          </p>
+        </div>
+        <div>
+          <p class="file__name">RenderData.js</p><span>component - get data from redux state</span>
+          <p>import { useSelector } from "react-redux"</p>
+          <p>import { selectMyArray } from "location of my slice"</p>
+          <p>
+            function App() { <br />
+            const myState = useSelector(selectMyArray); <br />
+            <br />
+            return ( <br />
+            <*div className="app"> <br />
+              <*div className="app__container"> <br />
+                <*div className="app__stateContainer"> <br />
+                  {myState.map(({ name, id }) => ( <br />
+                  <*div name={name} done={done} id={id} key={id} />
+                  <*/div> <br />
+                  ))} <br />
+                </*div> <br />
+              </*div> <br />
+            </*div> <br />
+            ); <br />
+            } <br />
+          </p>
+        </div>
+      </section>
+      <section id="redux-react-2">
+        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia dolorem soluta repellendus non? Voluptas
+          ratione aliquam sequi sint sunt iusto, quasi incidunt, nobis, quidem eligendi similique? Quia provident
+          perspiciatis cumque!</div>
+      </section>
+    </div>
+  </div>
+  <script src="./_js/script.js"></script>
+</body>
+
+</html>
