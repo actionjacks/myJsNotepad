@@ -6,126 +6,196 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./_styles/styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./_styles//css//index.css">
 </head>
 
 <body>
   <div class="wrapper">
     <div class="sidebar__left">
       <nav>
-        <ul>
-          <li><a href="#redux-react">1</a></li>
-          <li><a href="#redux-react-2">2</a></li>
-          <li><a href="">3</a></li>
+        <button class="menu__title redux">Redux in React</button>
+        <ul class="menu__container-redux">
+          <li><a class="menu__link" href="#redux-react">Array -add input value to redux state</a></li>
+          <li><a class="menu__link" href="#redux-react-2">2 example</a></li>
+          <li><a class="menu__link" href="#">3 example</a></li>
         </ul>
       </nav>
     </div>
     <div class="content__middle">
       <section id="redux-react">
-        <div>
-          <p class="file__name">index.js</p>
-          <p>import { Provider } from "react-redux"</p>
-          <p>import store from "location of my store"</p>
-          <p>ReactDOM.render(<br />
-            <*React.StrictMode><br />
-              <*Provider store={store}><br />
-                <*App /><br />
-                <*/Provider> <br />
-                */React.StrictMode>,<br />
-                document.getElementById("root")<br />
-                );<br />
+        <div class="file__container">
+          <!--  -->
+          <p class="file__name bg-bg c-white">index.js</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">{ Provider }</span> from
+            "react-redux"</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">store</span> from <span
+              class="f-bold c-red f-italic">"./location of my store"</span>
+          </p>
+          <br>
+          <p class="file-margin1">ReactDOM.render( </p>
+          <p class="file-margin1">
+            <.React.StrictMode>
+          </p>
+          <p class="file-margin1">
+            <span class="f-bold bg-bg c-white">
+              <.Provider store={store}>
+            </span>
+          </p>
+          <p class="file-margin1">
+            <.App />
+          </p>
+          <p class="file-margin1">
+            <span class="f-bold bg-bg c-white">
+              <./Provider> </span> </p> <p class="file-margin1">
+                <./React.StrictMode>, </p> <p class="file-margin1"> document.getElementById("root"));</p>
+          <br>
+          <!--  -->
+        </div>
+        <div class="file__container">
+          <p class="file__name bg-bg c-white">store.js</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">{ configureStore }</span> from
+            "@reduxjs/toolkit"
+          </p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">myArrayReducer</span> from <span
+              class="f-bold c-red f-italic">"./location of my
+              slice"</span>
+          </p>
+          <br>
+          <p class="file-margin1">export default <span class="f-bold c-red">configureStore</span>({</p>
+          <p class="file-margin1"> reducer: {</p>
+          <p class="file-margin1"> myArray: <span class="f-bold c-red">myArrayReducer,</span> </p>
+          <p class="file-margin4"> },</p>
+          <p class="file-margin1"> });</p>
+          <br>
+          <!--  -->
+        </div>
+        <div class="file__container">
+          <p class="file__name bg-bg c-white">myArraySlice.js (reducer file)</p>
+          <br>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">{ createSlice }</span> from
+            "@reduxjs/toolkit"</p>
+          <br>
+          <p class="file-margin1 font-s-1">const initialState = {</p>
+          <p class="file-margin1 font-s-1"> myArray: [ ],</p>
+          <p class="file-margin1 font-s-1"> };</p>
+          <br />
+          <p class="file-margin1 font-s-1"> const <span class="f-bold c-red">myArraySlice</span> = createSlice({</p>
+          <p class="file-margin1 font-s-1"> name: <span class="c-red">"myArray",</span></p>
+          <p class="file-margin1 font-s-1"> initialState,</p>
+          <p class="file-margin1 font-s-1"> reducers: {</p>
+          <br />
+          <p class="file-margin1 font-s-1 "> <span class="c-red">saveToMyArray: </span> (state, action) => {</p>
+          <p class="file-margin1 font-s-1"> state.myArray.push(action.payload);</p>
+          <p class="file-margin1 font-s-1"> },</p>
+          <br />
+          <p class="file-margin1 font-s-1"> <span class="c-red">deletFromMyArray:</span> (state, action) => {</p>
+          <p class="file-margin1 font-s-1"> state.myArray.map((item) => {</p>
+          <p class="file-margin1 font-s-1"> if (action.payload === item.id){ </p>
+          <p class="file-margin1 font-s-1"> *filter or delete </p>
+          <p class="file-margin6 font-s-1"> } </p>
+          <p class="file-margin4 font-s-1"> },</p>
+          <p class="file-margin2 font-s-1"> },</p>
+          <p class="file-margin1 font-s-1"></p>
+          <p class="file-margin1 font-s-1">});</p>
+          <br>
+          <p class="file-margin1 font-s-1 f-bold">export const { <span class="c-red">saveToMyArray</span>, <span
+              class="c-red">deletFromMyArray</span> } =
+            myArraySlice.actions</p>
+          <br>
+          <p class="file-margin1 font-s-1 f-bold">export const <span class="f-bold c-red">selectMyArray</span> = (state)
+            =>
+            state.myArray.myArray</p>
+          <br>
+          <p class="file-margin1 font-s-1 f-bold">export default <span class="f-bold c-red">myArraySlice.reducer</span>
           </p>
         </div>
-        <div>
-          <p class="file__name">store.js</p><span>store file</span>
-          <p>import { configureStore } from "@reduxjs/toolkit"</p>
-          <p>import myArrayReducer from "location of my slice"</p>
-          <p>export default configureStore({<br />
-            reducer: {<br />
-            myArray: myArrayReducer,<br />
-            },<br />
-            });<br />
+        <div class="file__container">
+          <p class="file__name font-s-1 bg-bg c-white">Component.js (save data to redux state)</p>
+          <p class="file-margin1 font-s-1">import { <span class="f-bold c-red">useDispatch</span> } from "react-redux"
           </p>
-        </div>
-        <div>
-          <p class="file__name">myArraySlice.js</p><span>reducer file</span>
-          <p>import { createSlice } from "@reduxjs/toolkit"</p>
-          <p>const initialState = {<br />
-            myArray: [],<br />
-            };<br />
-            const myArraySlice = createSlice({<br />
-            name: "myArray",<br />
-            initialState,<br />
-            reducers: {<br />
-            <br />
-            saveToMyArray: (state, action) => {<br />
-            state.myArray.push(action.payload);<br />
-            },<br />
-            <br />
-            deletFromMyArray: (state, action) => {<br />
-            state.myArray.map((item) => {<br />
-            if (action.payload === item.id){ <br />
-            *filter or delete <br />
-            } <br />
-            },<br />
-            },<br />
-            });</p>
-          <p>export const { saveToMyArray, deletFromMyArray } = myArraySlice.actions</p>
-          <p>export const selectMyArray= (state) => state.myArray.myArray</p>
-          <p>export default myArraySlice.reducer</p>
-        </div>
-        <div>
-          <p class="file__name">Component.js</p><span>component - save data to redux state</span>
-          <p>import { useDispatch } from "react-redux"</p>
-          <p>import { saveToMyArray } from "location of my slice"</p>
-          <p>
-            function Input() { <br />
-            const [input, setInput] = useState(""); <br />
-            const dispatch = useDispatch(); <br />
-            <br />
-            const addToMyArray = () => { <br />
-            dispatch( <br />
-            saveToMyArray({ <br />
-            name: input, <br />
-            id: Date.now(), <br />
-            }) <br />
-            ); <br />
-            }; <br />
-
-            return ( <br />
-            <*div className="input"> <br />
-              <*input <br />
-              type="text" <br />
-              value={input} <br />
-              onChange={(e) => setInput(e.target.value)} <br />
-              /> <br />
-              <*button onClick={addToMyArray}>Add</*button> <br />
-            </*div> <br />
-            ); <br />
-            } <br />
+          <p class="file-margin1 font-s-1">import { <span class="f-bold c-red">saveToMyArray</span> } from "<span
+              class="f-italic c-red">./location of
+              my slice</span>"</p>
+          <br>
+          <p class="file-margin1 font-s-1"> function Input() { </p>
+          <p class="file-margin1 font-s-1"> const <span class="f-bold c-red">[ input, setInput ]</span> = useState(" ");
+            //state from react hook </p>
+          <p class="file-margin1 font-s-1"> const <span class="f-bold c-red">dispatch</span> = useDispatch(); </p>
+          <br />
+          <p class="file-margin1 font-s-1"> const addToMyArray = ( ) => { </p>
+          <p class="file-margin2 font-s-1"> <span class="f-bold c-red">dispatch</span>( </p>
+          <p class="file-margin3 font-s-1"> <span class="f-bold c-red">saveToMyArray</span>({ </p>
+          <p class="file-margin3 font-s-1"> name: input, </p>
+          <p class="file-margin3 font-s-1"> id: Date.now(), </p>
+          <br>
+          <p class="file-margin5 font-s-1"> }) </p>
+          <p class="file-margin4 font-s-1"> ); </p>
+          <p class="file-margin3 font-s-1"> }; </p>
+          <br>
+          <p class="file-margin1 font-s-1"> return ( </p>
+          <p class="file-margin3 font-s-1">
+            <.div className="input">
           </p>
+          <p class="file-margin3 font-s-1">
+            <.input </p> <p class="file-margin3 font-s-1"> type="text"
+          </p>
+          <p class="file-margin3 font-s-1"> value={input} </p>
+          <p class="file-margin3 font-s-1"> <span class="bg-bg c-white">onChange={ (e) => setInput ( e.target.value
+              ) }</span> </p>
+          <p class="file-margin3 font-s-1 f-bold"> /> </p>
+          <br />
+          <p class="file-margin1 font-s-1 f-bold">
+            <.button <span class="bg-bg c-white f-bold">onClick={addToMyArray}</span>>Add<./button> </p> <p
+                class="file-margin1 font-s-1 f-bold">
+                </.div>
+          </p>
+          <p class="file-margin2 font-s-1 f-bold"> ); </p>
+          <p class="file-margin1 font-s-1 f-bold"> } </p>
+          <br />
         </div>
-        <div>
-          <p class="file__name">RenderData.js</p><span>component - get data from redux state</span>
-          <p>import { useSelector } from "react-redux"</p>
-          <p>import { selectMyArray } from "location of my slice"</p>
-          <p>
-            function App() { <br />
-            const myState = useSelector(selectMyArray); <br />
-            <br />
-            return ( <br />
-            <*div className="app"> <br />
-              <*div className="app__container"> <br />
-                <*div className="app__stateContainer"> <br />
-                  {myState.map(({ name, id }) => ( <br />
-                  <*div name={name} done={done} id={id} key={id} />
-                  <*/div> <br />
-                  ))} <br />
-                </*div> <br />
-              </*div> <br />
-            </*div> <br />
-            ); <br />
-            } <br />
+        <div class="file__container">
+          <p class="file__name bg-bg c-white">RenderData.js ( get data from redux state )</p>
+          <p class="file-margin1">import { <span class="f-bold c-red">useSelector</span> } from "react-redux"</p>
+          <p class="file-margin1">import { <span class="f-bold c-red">selectMyArray</span> } from "<span
+              class="f-bold c-red f-italic">./location of my slice</span>"</p>
+          <br>
+          <p class="file-margin1">
+            function App() { </p>
+          <p class="file-margin1"> const <span class="f-bold c-red">myState</span> = useSelector(selectMyArray); </p>
+          <br />
+          <p class="file-margin1"> return ( </p>
+          <p class="file-margin1">
+            <.div className="app">
+          </p>
+          <p class="file-margin3">
+            <.div className="app__container">
+          </p>
+          <p class="file-margin5">
+            <span class="bg-bg c-white">
+              <.div className="app__stateContainer">
+            </span>
+          </p>
+          <p class="file-margin5"> <span class="f-bold c-red">{ myState.map (({ name, id }) => ( </span></p>
+          <p class="file-margin5">
+            <span class="f-bold c-red">
+              <.div id={ id } key={ id } />{ name }
+              <./div> </span> </p/> <p class="file-margin9 f-bold c-red"> ))}
+          </p>
+          <p class="file-margin8"> );
+          </p />
+          <p class="file-margin7"> } </p>
+          <p class="file-margin3 ">
+            <span class="bg-bg c-white">
+              <.div>
+            </span>
+          </p>
+          <p class="file-margin2">
+            <.div>
+          </p>
+          <p class="file-margin1">
+            <.div>
           </p>
         </div>
       </section>
