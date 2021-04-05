@@ -6,3 +6,7 @@ center Icon in flex container:
 * display: flex;
 * justify-content: center; // na osi X
 * align-items: center; // na osi Y
+
+center Icon in grid container:
+* display: grid;
+* place-items: center;
