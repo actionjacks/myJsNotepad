@@ -10,3 +10,6 @@ center Icon in flex container:
 center Icon in grid container:
 * display: grid;
 * place-items: center;
+
+create empty array on some lenght
+* Array(number).fill()
