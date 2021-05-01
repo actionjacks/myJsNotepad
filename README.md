@@ -13,3 +13,8 @@ center Icon in grid container:
 
 create empty array on some lenght
 * Array(number).fill()
+
+delete space in container
+* height: 100vh
+* display: flex
+* flex-direction:column
