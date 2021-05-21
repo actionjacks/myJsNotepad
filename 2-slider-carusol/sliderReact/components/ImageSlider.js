@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
@@ -7,6 +7,23 @@ import "./ImageSlider.css";
 function ImageSlider({ slides }) {
   const [current, setCurrent] = useState(0);
   const length = slides.length;
+  const timeoutRef = useRef(null);
+
+  function resetTimeout() {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }
+  useEffect(() => {
+    timeoutRef.current = setTimeout(
+      () =>
+        setCurrent((prevCurrent) =>
+          prevCurrent === length - 1 ? 0 : prevCurrent + 1
+        ),
+      4000
+    );
+    return () => resetTimeout();
+  }, [current]);
 
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
